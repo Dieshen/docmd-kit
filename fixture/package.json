@@ -5,7 +5,8 @@
   "description": "A small docmd site that uses the kit the way a real one does. CI builds it against a real docmd.",
   "scripts": {
     "clean": "node -e \"const fs = require('fs'); fs.rmSync('.nav-generated.json', { force: true }); fs.rmSync('site', { recursive: true, force: true })\"",
-    "build": "npm run clean && docmd-kit check-drawio && docmd build && docmd-kit check-drawio --built && docmd-kit check-nav"
+    "build": "npm run clean && docmd-kit check-drawio && docmd build && docmd-kit check-drawio --built && docmd-kit check-nav",
+    "build:nav-only": "npm run clean && docmd build -c docmd.nav-only.json && docmd-kit check-nav --config docmd.nav-only.json"
   },
   "devDependencies": {
     "@docmd/core": "^0.10.1",

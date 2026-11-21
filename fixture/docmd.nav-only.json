@@ -1,0 +1,9 @@
+{
+  "title": "docmd-kit fixture, nav-gen only",
+  "url": "http://localhost:3000",
+  "src": "docs",
+  "out": "site",
+  "plugins": {
+    "docmd-kit/nav-gen": {}
+  }
+}

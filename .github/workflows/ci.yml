@@ -31,12 +31,14 @@ jobs:
         run: npm test
 
   site:
-    name: Build a real site (${{ matrix.os }})
+    name: Build a real site (${{ matrix.os }}, docmd ${{ matrix.docmd }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
+        # The oldest docmd the whole kit supports, and the newest in range.
+        docmd: ['0.9.4', '^0.10.1']
     defaults:
       run:
         shell: bash
@@ -46,8 +48,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install docmd and the kit
-        run: npm install
+      - name: Install docmd ${{ matrix.docmd }} and the kit
+        run: |
+          npm install
+          npm install --no-save "@docmd/core@${{ matrix.docmd }}"
+          node -p "'docmd ' + require('@docmd/core/package.json').version"
       - name: Build the fixture site with both checks
         run: npm run build
       - name: The built site holds both diagrams and loads the viewer only where needed
@@ -71,3 +76,29 @@ jobs:
           npm run build
           mkdir -p site/stale && echo '<html></html>' > site/stale/index.html
           if npx docmd-kit check-nav; then echo "the nav check passed with an unlinked page"; exit 1; fi
+
+  nav-only:
+    # docmd 0.8 runs nav-gen but does not apply the drawio plugin's output, so only nav-gen is
+    # supported there. This job keeps that promise honest.
+    name: nav-gen on docmd 0.8.17
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: fixture
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install docmd 0.8.17 and the kit
+        run: |
+          npm install
+          npm install --no-save "@docmd/core@0.8.17"
+          node -p "'docmd ' + require('@docmd/core/package.json').version"
+      - name: Build with nav-gen only and check the sidebar
+        run: npm run build:nav-only
+      - name: A stale page in the output must fail the nav check
+        run: |
+          mkdir -p site/stale && echo '<html></html>' > site/stale/index.html
+          if npx docmd-kit check-nav --config docmd.nav-only.json; then echo "the nav check passed with an unlinked page"; exit 1; fi

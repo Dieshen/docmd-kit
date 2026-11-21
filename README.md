@@ -11,6 +11,15 @@ Plugins and build gates for [docmd](https://docmd.io) sites.
 
 The two checks exist because docmd reports a plugin that throws and then still exits 0. Without them a broken build looks like a successful one.
 
+## Which docmd versions
+
+| docmd | nav-gen and check-nav | drawio and check-drawio |
+|---|---|---|
+| 0.8.17 | Yes | No. docmd 0.8 does not apply the plugin's output. `check-drawio --built` reports it |
+| 0.9.4 and newer | Yes | Yes |
+
+CI builds a small site against 0.8.17, 0.9.4 and the newest 0.10. Plugins are named by package (`docmd-kit/nav-gen`) on all three.
+
 ## Install
 
 Pinned to a tag, straight from GitHub. There is no registry to log in to, and it is the same command locally and in CI.
@@ -19,7 +28,7 @@ Pinned to a tag, straight from GitHub. There is no registry to log in to, and it
 {
   "devDependencies": {
     "@docmd/core": "^0.10.1",
-    "docmd-kit": "github:Dieshen/docmd-kit#v0.1.2"
+    "docmd-kit": "github:Dieshen/docmd-kit#v0.1.3"
   }
 }
 ```
