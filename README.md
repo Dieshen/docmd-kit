@@ -19,7 +19,7 @@ Pinned to a tag, straight from GitHub. There is no registry to log in to, and it
 {
   "devDependencies": {
     "@docmd/core": "^0.10.1",
-    "docmd-kit": "github:Dieshen/docmd-kit#v0.1.1"
+    "docmd-kit": "github:Dieshen/docmd-kit#v0.1.2"
   }
 }
 ```
