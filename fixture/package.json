@@ -1,0 +1,14 @@
+{
+  "name": "docmd-kit-fixture",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A small docmd site that uses the kit the way a real one does. CI builds it against a real docmd.",
+  "scripts": {
+    "clean": "node -e \"const fs = require('fs'); fs.rmSync('.nav-generated.json', { force: true }); fs.rmSync('site', { recursive: true, force: true })\"",
+    "build": "npm run clean && docmd-kit check-drawio && docmd build && docmd-kit check-drawio --built && docmd-kit check-nav"
+  },
+  "devDependencies": {
+    "@docmd/core": "^0.10.1",
+    "docmd-kit": "file:.."
+  }
+}

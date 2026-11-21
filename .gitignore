@@ -2,3 +2,8 @@ node_modules/
 
 # A global gitignore may ignore bin/. The command-line entry point lives there.
 !/bin/
+
+# The fixture site's build output. No lockfile is kept for it, so CI builds against the newest docmd in range.
+fixture/site/
+fixture/.nav-generated*.json
+fixture/package-lock.json

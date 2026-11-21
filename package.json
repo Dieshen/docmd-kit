@@ -22,7 +22,7 @@
     "test": "node --test test/"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "peerDependencies": {
     "@docmd/core": ">=0.10.0"

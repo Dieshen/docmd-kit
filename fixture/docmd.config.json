@@ -1,0 +1,10 @@
+{
+  "title": "docmd-kit fixture",
+  "url": "http://localhost:3000",
+  "src": "docs",
+  "out": "site",
+  "plugins": {
+    "docmd-kit/nav-gen": {},
+    "docmd-kit/drawio": {}
+  }
+}
