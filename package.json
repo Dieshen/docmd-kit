@@ -1,0 +1,34 @@
+{
+  "name": "docmd-kit",
+  "version": "0.1.0",
+  "description": "Plugins and build gates for docmd sites: a generated sidebar, draw.io diagrams, and the checks that make a broken build actually fail.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./nav-gen": "./plugins/nav-gen.mjs",
+    "./drawio": "./plugins/drawio.mjs",
+    "./check-nav": "./lib/check-nav.mjs",
+    "./check-drawio": "./lib/check-drawio.mjs"
+  },
+  "bin": {
+    "docmd-kit": "bin/docmd-kit.mjs"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "plugins"
+  ],
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "@docmd/core": ">=0.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dieshen/docmd-kit.git"
+  }
+}

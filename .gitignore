@@ -1,0 +1,4 @@
+node_modules/
+
+# A global gitignore may ignore bin/. The command-line entry point lives there.
+!/bin/
