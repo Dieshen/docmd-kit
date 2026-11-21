@@ -1,6 +1,6 @@
 {
   "name": "docmd-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Plugins and build gates for docmd sites: a generated sidebar, draw.io diagrams, and the checks that make a broken build actually fail.",
   "license": "MIT",
   "type": "module",

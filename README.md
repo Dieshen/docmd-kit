@@ -19,7 +19,7 @@ Pinned to a tag, straight from GitHub. There is no registry to log in to, and it
 {
   "devDependencies": {
     "@docmd/core": "^0.10.1",
-    "docmd-kit": "github:Dieshen/docmd-kit#v0.1.0"
+    "docmd-kit": "github:Dieshen/docmd-kit#v0.1.1"
   }
 }
 ```
@@ -121,3 +121,7 @@ npm test
 ```
 
 There is no build step. Before trusting a change to a check, break the code it guards and confirm a test goes red.
+
+## Licence
+
+MIT, see [LICENSE](LICENSE). The vendored draw.io viewer in `plugins/drawio-vendor/` is not covered by it: that file is Apache License 2.0, see its [NOTICE](plugins/drawio-vendor/NOTICE.md).
